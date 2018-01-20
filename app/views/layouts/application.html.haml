@@ -1,0 +1,38 @@
+!!!
+%html{lang: 'de'}
+  %head
+    %meta{ charset: "utf-8"}
+    %meta{ name: "viewport",  content: "width=device-width, initial-scale=1, maximum-scale=1" }
+    %meta{ name: "robots", content: "noindex, nofollow" }
+    %link{rel:         "stylesheet",
+          href:        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+          integrity:   "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u",
+          crossorigin: "anonymous"}
+
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = yield :stylesheets
+    = yield :javascripts
+    = csrf_meta_tag
+    %title Reddy
+
+%body
+  .navbar.navbar-fixed-top{role: "navigation"}
+    .container{id: "customnav"}
+      = link_to "Reddy", root_path, class: "navbar-brand"
+      %ul.nav.navbar-nav.navbar-left
+        %li{class: ['cycles'].include?(controller_name) ? ' active' : nil}
+          = link_to cycles_path do
+            %i.glyphicon.glyphicon-adjust
+            %small Cycles
+        %li{class: ['days'].include?(controller_name) ? ' active' : nil}
+          = link_to days_path do
+            %i.glyphicon.glyphicon-th
+            %small Days
+
+    .container
+      = bootstrap_flash_tag
+      = yield
+      %footer{style: 'margin-top: 30px'}
+        %p
+          %span &copy; Kaja Santro

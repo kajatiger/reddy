@@ -1,0 +1,22 @@
+.page-header
+  .row
+    .col-md-12
+      %h1
+        All Cycles
+        %small (#{collection.count})
+        .pull-right
+          = link_to new_cycle_path, class: 'btn btn-warning' do
+            %i.glyphicon.glyphicon-plus
+            New Cycle
+
+.table-responsive.table-dark
+  .thead
+  .tbody
+    - collection.each do |cycle|
+      .tr
+        .td
+          = cycle.title
+        .td
+          = link_to 'Show', cycle
+        .td
+          = link_to 'Edit', edit_cycle_path(cycle)

@@ -1,0 +1,11 @@
+= form_with(model: cycle, local: true) do |f|
+  = bootstrap_errors_for resource
+
+  %fieldset
+    %legend Allgemein
+    .form-group
+      = f.label :title, "Titel", class: "control-label col-md-3"
+      .col-md-9
+        = f.text_field :title, class: 'form-control'
+
+    = f.submit
